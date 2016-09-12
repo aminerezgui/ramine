@@ -32,6 +32,29 @@ void ft_list_push_back(t_list **begin_list, void *data)
 
 }
 
+t_list *ft_list_copy(t_list *begin_list_ref)
+{
+	t_list *t;
+	t_list *r;
+	t_list *begin_list_copy;
+	if (begin_list_ref == 0)
+	{
+		begin_list_copy = 0;
+		return (0);
+	}
+	t = begin_list_ref;
+	r = begin_list_copy;
+	r = ft_creat_elem(t->data);
+	t = t->next;
+	while (t)
+	{
+		r->next = ft_creat_elem(t->data);
+		t = t->next;
+		r = r->next;
+	}
+	return (begin_list_copy);
+}
+
 void ft_list_print(t_list *begin_list)
 {
 	t_list *t;
@@ -53,7 +76,7 @@ void ft_list_print(t_list *begin_list)
 int main(void)
 {
 	int i;
-	char str[10] = "aminerez";
+	char str[2] = "a";
 	t_list **first;
 	first = (t_list**)malloc(sizeof(t_list*));
 	*first = 0;
@@ -64,6 +87,6 @@ int main(void)
 		ft_list_push_back(first, str + i);
 		i++;
 	}
-	ft_list_print(*first);
+	ft_list_print(ft_list_copy(*first));
 	return (0);
 }
