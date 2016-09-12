@@ -64,29 +64,27 @@ void ft_list_print(t_list *begin_list)
 	t = begin_list;
 	while (t->next)
 	{
-		write(1, t->data, 1);
-		//printf("%s", t->data);
+		printf("%s\n", t->data);
 		t = t->next;
 	}
-	//printf("%s", t->data);	
-	write(1, t->data, 1);
+	printf("%s\n", t->data);	
 }
 
 
-int main(void)
+int main(int ac, char **av)
 {
 	int i;
-	char str[2] = "a";
 	t_list **first;
 	first = (t_list**)malloc(sizeof(t_list*));
 	*first = 0;
 	i = 0;
 
-	while (str[i])
+	while (av[i])
 	{
-		ft_list_push_back(first, str + i);
+		ft_list_push_back(first, av[i]);
 		i++;
 	}
+	ft_list_print(*first);
 	ft_list_print(ft_list_copy(*first));
 	return (0);
 }
