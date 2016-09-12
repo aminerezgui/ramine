@@ -37,6 +37,7 @@ t_list *ft_list_copy(t_list *begin_list_ref)
 	t_list *t;
 	t_list *r;
 	t_list *begin_list_copy;
+	begin_list_copy = 0;
 	if (begin_list_ref == 0)
 	{
 		begin_list_copy = 0;
@@ -77,7 +78,7 @@ int main(int ac, char **av)
 	t_list **first;
 	first = (t_list**)malloc(sizeof(t_list*));
 	*first = 0;
-	i = 0;
+	i = ac - ac;
 
 	while (av[i])
 	{
