@@ -37,7 +37,6 @@ t_list *ft_list_copy(t_list *begin_list_ref)
 	t_list *t;
 	t_list *r;
 	t_list *begin_list_copy;
-	begin_list_copy = 0;
 	if (begin_list_ref == 0)
 	{
 		begin_list_copy = 0;
@@ -71,7 +70,14 @@ void ft_list_print(t_list *begin_list)
 	printf("%s\n", t->data);	
 }
 
-
+t_list *ft_list_at(t_list *begin_list, int n)
+{
+	if ( n < 0)
+		return (0);
+	if (n == 0)
+		return (begin_list);
+	return ft_list_at(begin_list->next, n - 1);
+}
 int main(int ac, char **av)
 {
 	int i;
@@ -86,6 +92,6 @@ int main(int ac, char **av)
 		i++;
 	}
 	ft_list_print(*first);
-	ft_list_print(ft_list_copy(*first));
+	printf("%s", (ft_list_at(*first, 2))->data);
 	return (0);
 }
