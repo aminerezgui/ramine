@@ -37,3 +37,9 @@ void erathostene(int a)
 		i++;
 	}
 }
+
+int main()
+{
+	erathostene(20);
+	return (0);
+}
