@@ -1,5 +1,5 @@
 #include <unistd.h>
-#include <stdarg.h>
+#include <stdlib.h>
 
 void erathostene(int a)
 {
@@ -36,4 +36,10 @@ void erathostene(int a)
 			ft_printf("%d est le n°%d nombre  premier\n", tab[i], k++);
 		i++;
 	}
+}
+
+int main(void)
+{
+	erathostene(100);
+	return (0);
 }

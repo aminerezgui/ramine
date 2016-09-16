@@ -3,8 +3,6 @@ EXE = a.out
 
 all :
 	gcc -Wall -Wextra -Werror $(NAME)
-exe : 
-	./$(EXE)
 clean :
 	rm -f $(EXE)
-re : clean all exe
+re : clean all

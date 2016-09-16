@@ -92,6 +92,8 @@ void ft_printf(char *str, ...)
 			ft_putnbr_long(next_long);
 			i+=3;
 		}
+		if (str[i] == '\0')
+			return ;
 		write(1, str + i, 1);
 		i++;
 	}
