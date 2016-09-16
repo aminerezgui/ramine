@@ -38,8 +38,14 @@ void erathostene(int a)
 	}
 }
 
+<<<<<<< HEAD
 int main(void)
 {
 	erathostene(100);
+=======
+int main()
+{
+	erathostene(20);
+>>>>>>> d4396eedc0e86bc5671c73df99818a6c2a2118c1
 	return (0);
 }
