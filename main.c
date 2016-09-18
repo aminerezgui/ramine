@@ -37,6 +37,8 @@ t_list *ft_list_copy(t_list *begin_list_ref)
 	t_list *t;
 	t_list *r;
 	t_list *begin_list_copy;
+
+	begin_list_copy =(t_list*)malloc(sizeof(t_list));
 	if (begin_list_ref == 0)
 	{
 		begin_list_copy = 0;
@@ -58,16 +60,19 @@ t_list *ft_list_copy(t_list *begin_list_ref)
 void ft_list_print(t_list *begin_list)
 {
 	t_list *t;
+	char *str;
 
 	if (begin_list == 0)
 		return ;
 	t = begin_list;
 	while (t->next)
 	{
-		printf("%s\n", t->data);
+		str = t->data;
+		printf("%s\n", str);
 		t = t->next;
 	}
-	printf("%s\n", t->data);	
+	str = t->data;
+	printf("%s\n", str);	
 }
 
 t_list *ft_list_at(t_list *begin_list, int n)
@@ -78,20 +83,20 @@ t_list *ft_list_at(t_list *begin_list, int n)
 		return (begin_list);
 	return ft_list_at(begin_list->next, n - 1);
 }
+
+int ft_list_size(t_list *begin_list)
+{
+	if (begin_list == 0)
+		return (0);
+	return 1 + ft_list_size(begin_list->next);
+}
+
 int main(int ac, char **av)
 {
 	int i;
 	t_list **first;
 	first = (t_list**)malloc(sizeof(t_list*));
 	*first = 0;
-	i = ac - ac;
 
-	while (av[i])
-	{
-		ft_list_push_back(first, av[i]);
-		i++;
-	}
-	ft_list_print(*first);
-	printf("%s", (ft_list_at(*first, 2))->data);
 	return (0);
 }

@@ -1,13 +1,13 @@
-#include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 void erathostene(int a)
 {
 	int k;
 	int i;
 	int *tab;
-	tab = (int*)malloc(sizeof(int) * a - 1);
 
+	tab = (int*)malloc(sizeof(int) * a - 1);
 	i = 0;
 	k = 2;
 	while (i < a - 1)
@@ -33,19 +33,13 @@ void erathostene(int a)
 	while (i < a - 1)
 	{
 		if (tab[i] != 0)
-			ft_printf("%d est le n°%d nombre  premier\n", tab[i], k++);
+			ft_printf("%d\n", tab[i]);
 		i++;
 	}
 }
 
-<<<<<<< HEAD
-int main(void)
-{
-	erathostene(100);
-=======
 int main()
 {
-	erathostene(20);
->>>>>>> d4396eedc0e86bc5671c73df99818a6c2a2118c1
+	erathostene(100);
 	return (0);
 }
