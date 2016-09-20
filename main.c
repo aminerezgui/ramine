@@ -92,32 +92,50 @@ int ft_list_size(t_list *begin_list)
 	return 1 + ft_list_size(begin_list->next);
 }
 
-int main(int ac, char **av)
+t_list *read_to_list(int fd)
 {
 	int nb;
 	char c;
 	char *p;
-	int *int_ptr;
-	t_list **first;
+	t_list *first;
 
-	first = (t_list**)malloc(sizeof(t_list*));
-	*first = 0;
+	first = (t_list*)malloc(sizeof(t_list));
+	first = 0;
 	while (1)
 	{
-		nb = read(0, &c, 1);
+		nb = read(fd, &c, 1);
 		if (nb == 0)
 			break ;
-		if (c != 10)
-		{
 		p = (char*)malloc(sizeof(char));
 		*p = c;
-		ft_printf("%ld\n", p);
-		ft_list_push_back(first, p);
-		}
+		ft_list_push_back(&first, p);
 	}
-	ft_printf("%d\n", ft_list_size(*first));
-	ft_list_print(*first);
-	int_ptr = (ft_list_at(*first, 0)->data);
-	ft_printf("%d", *(int_ptr));
-	return (0);
+	return (first);
+}
+
+char *list_to_string(t_list *begin_list)
+{
+	t_list *t;
+	char *str;
+	int i;
+	char *c;
+
+	t = begin_list;
+	i = 0;
+	str = (char*)malloc(sizeof(char) * ft_list_size(begin_list) + 1);
+	
+	while (i < ft_list_size(begin_list))
+	{
+		c = t->data;
+		str[i] = *c;
+		t = t->next;
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+int main(void)
+{
+	ft_putstr(list_to_string(read_to_list(0)));
 }
