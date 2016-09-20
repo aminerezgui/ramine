@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "ft_list.h"
 
 t_list *ft_creat_elem(void *data)
@@ -68,11 +69,11 @@ void ft_list_print(t_list *begin_list)
 	while (t->next)
 	{
 		str = t->data;
-		printf("%s\n", str);
+		write(1, str, 1);
 		t = t->next;
 	}
 	str = t->data;
-	printf("%s\n", str);	
+	write(1, str, 1);
 }
 
 t_list *ft_list_at(t_list *begin_list, int n)
@@ -93,10 +94,30 @@ int ft_list_size(t_list *begin_list)
 
 int main(int ac, char **av)
 {
-	int i;
+	int nb;
+	char c;
+	char *p;
+	int *int_ptr;
 	t_list **first;
+
 	first = (t_list**)malloc(sizeof(t_list*));
 	*first = 0;
-
+	while (1)
+	{
+		nb = read(0, &c, 1);
+		if (nb == 0)
+			break ;
+		if (c != 10)
+		{
+		p = (char*)malloc(sizeof(char));
+		*p = c;
+		ft_printf("%ld\n", p);
+		ft_list_push_back(first, p);
+		}
+	}
+	ft_printf("%d\n", ft_list_size(*first));
+	ft_list_print(*first);
+	int_ptr = (ft_list_at(*first, 0)->data);
+	ft_printf("%d", *(int_ptr));
 	return (0);
 }
