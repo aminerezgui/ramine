@@ -13,6 +13,18 @@ t_list *ft_creat_elem(void *data)
 	return (elem);
 }
 
+t_list *ft_list_push_front(t_list **begin_list, void data)
+{
+	t_list *t;
+	t_list *elem;
+
+	elem = ft_creat_elem(data);
+	if (*begin_list = 0)
+		return elem;
+	elem->next = *begin_list;
+	return elem;
+}
+
 void ft_list_push_back(t_list **begin_list, void *data)
 {
 	t_list *t;
@@ -137,5 +149,5 @@ char *list_to_string(t_list *begin_list)
 
 int main(void)
 {
-	ft_putstr(list_to_string(read_to_list(0)));
+	
 }

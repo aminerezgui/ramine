@@ -1,5 +1,5 @@
 #include <stdlib.h>
-
+#include "ft_list.h"
 char *zero(char *str)
 {
 	str =(char*)malloc(sizeof(char) * 2);

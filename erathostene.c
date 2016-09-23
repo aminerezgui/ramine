@@ -19,12 +19,15 @@ void erathostene(int a)
 	i = 0;
 	while (i < a - 1)
 	{
+		if (tab[i] != 0)
+		{
 		k = i + 1;
 		while (k < a - 1)
 		{
 			if (tab[k] % tab[i] == 0)
 				tab[k] = 0;
 			k++;	
+		}
 		}
 		i++;
 	}
