@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include "ft_list.h"
@@ -13,16 +12,20 @@ t_list *ft_creat_elem(void *data)
 	return (elem);
 }
 
-t_list *ft_list_push_front(t_list **begin_list, void data)
+void ft_list_push_front(t_list **begin_list, void *data)
 {
-	t_list *t;
 	t_list *elem;
+	t_list *t;
 
+	t = *begin_list;
 	elem = ft_creat_elem(data);
 	if (*begin_list = 0)
-		return elem;
-	elem->next = *begin_list;
-	return elem;
+	{
+		*begin_list = elem;
+		return ;
+	}
+	elem->next = t;
+	*begin_list = elem;
 }
 
 void ft_list_push_back(t_list **begin_list, void *data)
@@ -145,9 +148,4 @@ char *list_to_string(t_list *begin_list)
 	}
 	str[i] = '\0';
 	return (str);
-}
-
-int main(void)
-{
-	
 }
