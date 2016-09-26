@@ -22,13 +22,7 @@ void ft_myputnbr(long a)
 		a = a / 10;
 	}
 	if (!*first)
-		return write(1, "0", 1);
+		write(1, "0", 1);
 	ft_list_print(*first);
 	free(first);
-}
-
-int main(void)
-{
-	ft_myputnbr(-1324);
-	return (0);
 }

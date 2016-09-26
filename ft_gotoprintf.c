@@ -65,37 +65,37 @@ void ft_putnbr_long(long nbr)
 void ft_printf(char *str, ...)
 {
 	int i;
-	char *next;
-	int next_int;
-	long next_long;
 	va_list ap;
 
 	va_start(ap, str);
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '%' && str[i + 1] == 's')
+		while (str[i] == '%')
 		{
-			next = va_arg(ap, char*);
-			ft_putstr(next);
-			i+=2;
+			if (str[i + 1] == 's')
+			{
+				ft_putstr(va_arg(ap, char*));
+				i+=2;
+			}
+			if (str[i + 1] == 'd')
+			{
+				ft_putnbr(va_arg(ap, int));
+				i+=2;
+			}
+			if (str[i + 1] == 'l' && str[i + 2] == 'd')
+			{
+				ft_putnbr_long(va_arg(ap,long));
+				i+=3;
+			}
 		}
-		if (str[i] == '%' && str[i + 1] == 'd')
-		{
-			next_int = va_arg(ap, int);
-			ft_putnbr(next_int);
-			i+=2;
-		}
-		if (str[i] == '%' && str[i + 1] == 'l' && str[i + 2] == 'd')
-		{
-			next_long = va_arg(ap, long);
-			ft_putnbr_long(next_long);
-			i+=3;
-		}
-		if (str[i] == '\0')
-			return ;
 		write(1, str + i, 1);
 		i++;
 	}
 	va_end(ap);
+}
+
+int main(void)
+{
+	ft_printf("%d %s %s", 12, "amine", "elamin");
 }
