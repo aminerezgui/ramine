@@ -1,6 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <limits.h>
 #include "ft_list.h"
+
+void free_list(t_list *first)
+{
+	if (first != 0)
+		free_list(first->next);
+	free(first);
+}
 
 void ft_myputnbr(long a)
 {	
@@ -24,5 +32,5 @@ void ft_myputnbr(long a)
 	if (!*first)
 		write(1, "0", 1);
 	ft_list_print(*first);
-	free(first);
+	free_list(*first);
 }
