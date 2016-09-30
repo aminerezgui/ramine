@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdarg.h>
+#include <limits.h>
 
 void ft_putstr(char *str)
 {
@@ -78,24 +79,32 @@ void ft_printf(char *str, ...)
 				ft_putstr(va_arg(ap, char*));
 				i+=2;
 			}
-			if (str[i + 1] == 'd')
+			else if (str[i + 1] == 'd')
 			{
-				ft_putnbr(va_arg(ap, int));
+				ft_myputnbr(va_arg(ap, int));
 				i+=2;
 			}
-			if (str[i + 1] == 'l' && str[i + 2] == 'd')
+			else if (str[i + 1] == 'l' && str[i + 2] == 'd')
 			{
-				ft_putnbr_long(va_arg(ap,long));
+				ft_myputnbr(va_arg(ap,long));
 				i+=3;
 			}
+			else
+			{
+				write(1, str + i, 1);
+				i++;
+			}
 		}
-		write(1, str + i, 1);
-		i++;
+		if (str[i] != '\0')
+		{
+			write(1, str + i, 1);
+			i++;
+		}
 	}
 	va_end(ap);
 }
 
 int main(void)
 {
-	ft_printf("%d %s %s", 12, "amine", "elamin");
+	ft_printf("%%%%%%s%%%%%d", "et smith", INT_MAX + 1);
 }
