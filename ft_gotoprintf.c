@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <limits.h>
+#include <stdio.h>
 
 void ft_putstr(char *str)
 {
@@ -74,6 +75,11 @@ void ft_printf(char *str, ...)
 	{
 		while (str[i] == '%')
 		{
+			if (str[i + 1] == 'c')
+			{
+				ft_putchar(va_arg(ap, int));
+				i+=2;
+			}
 			if (str[i + 1] == 's')
 			{
 				ft_putstr(va_arg(ap, char*));
@@ -106,5 +112,6 @@ void ft_printf(char *str, ...)
 
 int main(void)
 {
-	ft_printf("%%%%%%s%%%%%d", "et smith", INT_MAX + 1);
+	printf("%c##%%%%", 'a');
+	ft_printf("%c##%%%%", 'a');
 }
