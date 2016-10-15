@@ -95,6 +95,11 @@ void ft_printf(char *str, ...)
 				ft_myputnbr(va_arg(ap,long));
 				i+=3;
 			}
+			else if (str[i + 1] == 'x')
+			{
+				convert_base(va_arg(ap, long), 16);
+				i+=2;
+			}
 			else
 			{
 				write(1, str + i, 1);
@@ -112,6 +117,7 @@ void ft_printf(char *str, ...)
 
 int main(void)
 {
-	printf("%c##%%%%", 'a');
-	ft_printf("%c##%%%%", 'a');
+	printf("%x\n", 43);
+
+	ft_printf("%x", 43);
 }
