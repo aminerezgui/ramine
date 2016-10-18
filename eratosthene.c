@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 
 void eratosthene(int a)
 {
@@ -39,10 +38,4 @@ void eratosthene(int a)
 			ft_printf("%d\n", tab[i]);
 		i++;
 	}
-}
-
-int main()
-{
-	eratosthene(1000);
-	return (0);
 }

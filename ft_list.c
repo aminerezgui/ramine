@@ -107,6 +107,13 @@ int ft_list_size(t_list *begin_list)
 	return 1 + ft_list_size(begin_list->next);
 }
 
+void ft_list_free(t_list *first)
+{
+	if (first != 0)
+		ft_list_free(first->next);
+	free(first);
+}
+
 t_list *read_to_list(int fd)
 {
 	int nb;

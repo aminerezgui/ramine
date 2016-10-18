@@ -3,67 +3,6 @@
 #include <limits.h>
 #include <stdio.h>
 
-void ft_putstr(char *str)
-{
-	int i;
-	i = 0;
-
-	while (str[i])
-	{
-		write(1, str + i, 1);
-		i++;
-	}
-}
-
-int ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (0);
-}
-
-void ft_putnbr(int nbr)
-{
-	if (nbr == -2147483648)
-	{
-		ft_putstr("-2147483648");
-		return ;
-	}
-	if (nbr < 0)
-	{
-		nbr = -nbr;
-		ft_putchar('-');
-		
-	}
-	if (nbr >= 0 && nbr <= 9)
-		ft_putchar(nbr + 48);
-	else
-	{
-		ft_putnbr(nbr / 10);
-		ft_putnbr(nbr % 10);
-	}
-}
-
-void ft_putnbr_long(long nbr)
-{
-	if (nbr == -9223372036854775808)
-	{
-		ft_putstr("-9223372036854775808");
-		return ;
-	}
-	if (nbr < 0)
-	{
-		nbr = -nbr;
-		ft_putstr("-");
-	}
-	if (nbr >= 0 && nbr <= 9)
-		ft_putchar(nbr + 48);
-	else
-	{
-		ft_putnbr_long(nbr / 10);
-		ft_putnbr_long(nbr % 10);
-	}
-}
-
 void ft_printf(char *str, ...)
 {
 	int i;
@@ -97,7 +36,17 @@ void ft_printf(char *str, ...)
 			}
 			else if (str[i + 1] == 'x')
 			{
-				convert_base(va_arg(ap, long), 16);
+				convert_base(va_arg(ap, long), 16, 97);
+				i+=2;
+			}
+			else if (str[i + 1] == 'X')
+			{
+				convert_base(va_arg(ap, long), 16, 65);
+				i+=2;
+			}
+			else if (str[i + 1] == 'b')
+			{
+				convert_base(va_arg(ap, long), 2, 0);
 				i+=2;
 			}
 			else
@@ -117,7 +66,8 @@ void ft_printf(char *str, ...)
 
 int main(void)
 {
-	printf("%x\n", 43);
-
-	ft_printf("%x", 43);
+	printf("le nombre %d en base hexadecimale est : %X et en base binaire c'est : %b", 2016, 2016, 2016);
+	printf("\n\n");
+	ft_printf("le nombre %d en base hexadecimale est : %X et en base binaire c'est : %b", 2016, 2016, 2016);
+	return (0);
 }

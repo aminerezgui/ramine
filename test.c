@@ -1,16 +1,18 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-void ft_putstr(char *str)
+va_list aff_derch(va_list ap)
 {
-	int i;
-	i = 0;
+	char *next;
 
-	while (str[i])
+	next = va_arg(ap, char*);
+	while (next != 0)
 	{
-		write(1, str + i, 1);
-		i++;
+		ft_putstr(next);
+		ft_putstr("\n");
+		next = va_arg(ap, char*);
 	}
+	return (ap);
 }
 
 void aff_var(char *str, ...)
@@ -26,10 +28,13 @@ void aff_var(char *str, ...)
 		ft_putstr("\n");
 		next = va_arg(ap, char*);
 	}
+	next = va_arg(aff_derch(ap), char*);
+	ft_putstr(next);
 	va_end(ap);
 }
 
 int main(void)
 {
-	aff_var("c'est", "pour", "toi", "abdu", 0);
+	aff_var("c'est", "pour", "toi", "abdu", 0, "et", "rebolote", 0, "FINISH");
+	return (0);
 }
