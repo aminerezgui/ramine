@@ -42,6 +42,12 @@ int ft_parameters(va_list ap, char *str, int i)
 			convert_base(va_arg(ap, long), 2, 0);
 			i+=2;
 		}
+		else if (str[i + 1] == 'p')
+		{
+			ft_putstr("0x");
+			convert_base(va_arg(ap, void*), 16, 97);
+			i+=2;
+		}
 		else
 		{
 			write(1, str + i, 1);
@@ -75,12 +81,14 @@ void ft_printf(char *str, ...)
 
 int main(void)
 {
-	int *ptr;
+	void *data;
 	int a;
+	char str[4] = "ami";
 	a = 15;
-	ptr = &a;
-	ft_printf("%x\n", ptr, ptr);
+	
+	ft_printf("c'est bon je sais faire les adresses par ex: %p\n", str);
 
-	printf("%p", ptr);
+	printf("c'est bon je sais faire les adresses par ex: %p\n", str);
+	
 	return (0);
 }
