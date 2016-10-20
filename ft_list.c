@@ -19,7 +19,7 @@ void ft_list_push_front(t_list **begin_list, void *data)
 
 	t = *begin_list;
 	elem = ft_creat_elem(data);
-	if (*begin_list = 0)
+	if (*begin_list == 0)
 	{
 		*begin_list = elem;
 		return ;
