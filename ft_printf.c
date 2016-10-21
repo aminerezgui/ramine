@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <limits.h>
 #include <stdio.h>
-
+#include "ft_lib.h"
 
 int ft_parameters(va_list ap, char *str, int i)
 {
@@ -45,7 +45,7 @@ int ft_parameters(va_list ap, char *str, int i)
 		else if (str[i + 1] == 'p')
 		{
 			ft_putstr("0x");
-			convert_base(va_arg(ap, void*), 16, 97);
+			convert_base((long)va_arg(ap, void*), 16, 97);
 			i+=2;
 		}
 		else
@@ -81,14 +81,7 @@ void ft_printf(char *str, ...)
 
 int main(void)
 {
-	void *data;
-	int a;
-	char str[4] = "ami";
-	a = 15;
-	
-	ft_printf("c'est bon je sais faire les adresses par ex: %p\n", str);
+	ft_printf("");
 
-	printf("c'est bon je sais faire les adresses par ex: %p\n", str);
-	
 	return (0);
 }

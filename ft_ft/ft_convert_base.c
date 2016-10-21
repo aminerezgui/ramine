@@ -1,5 +1,4 @@
-#include <unistd.h>
-#include "ft.h"
+int ft_putchar(char c);
 
 void ft_putnbr_spe(int nbr, int maj)
 {
