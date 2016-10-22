@@ -4,6 +4,7 @@
 int ft_putchar(char c);
 void ft_putstr(char *str);
 void ft_myputnbr(long nbr);
+void ft_myputdec(double f);
 void convert_base(long nbr, int base, int maj);
  
 #endif

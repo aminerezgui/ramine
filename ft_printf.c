@@ -48,6 +48,16 @@ int ft_parameters(va_list ap, char *str, int i)
 			convert_base((long)va_arg(ap, void*), 16, 97);
 			i+=2;
 		}
+		else if (str[i + 1] == 'f')
+		{
+			ft_myputdec(va_arg(ap, double));
+			i+=2;
+		}
+		else if (str[i + 1] == 'l' && str[i + 2] == 'f')
+		{
+			ft_myputdec(va_arg(ap,double));
+			i+=3;
+		}
 		else
 		{
 			write(1, str + i, 1);
@@ -81,7 +91,8 @@ void ft_printf(char *str, ...)
 
 int main(void)
 {
-	ft_printf("");
+	ft_printf("ce resultat me parait bon :\t%lf Mais encore\n", 231.331 + 2.1);
+	ft_printf("ce resultat me parait bon :\t mais encore %lf\n", 231.331 + 2.1);
 
 	return (0);
 }
