@@ -88,11 +88,3 @@ void ft_printf(char *str, ...)
 	}
 	va_end(ap);
 }
-
-int main(void)
-{
-	ft_printf("ce resultat me parait bon :\t%lf Mais encore\n", 231.331 + 2.1);
-	ft_printf("ce resultat me parait bon :\t mais encore %lf\n", 231.331 + 2.1);
-
-	return (0);
-}
