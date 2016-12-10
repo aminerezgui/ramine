@@ -1,10 +1,13 @@
 #include <stdlib.h>
+#include "ft_lib.h"
 
 int **ft_creat_tab(int line, int column)
 {
 	int **tab;
 	int i;
 
+	if (line == 0 || column == 0)
+		return (0);
 	tab = (int**)malloc(sizeof(int*) * line);
 	i = 0;
 	while (i < line)
@@ -20,6 +23,8 @@ void ft_print_tab(int **tab, int line, int column)
 	int i;
 	int j;
 
+	if (tab == 0)
+		return ;
 	i = 0;
 	while (i < line)
 	{
@@ -71,8 +76,9 @@ int **ft_mix_mat(int **tab1, int **tab2, int n, int p, int q)
 	int **tab;
 	int i;
 	int j;
-	int k;
 
+	if (tab1 == 0 || tab2 == 0)
+		return (0);
 	tab = ft_creat_tab(n, q);
 	i = 0;
 	while (i < n)
