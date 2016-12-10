@@ -87,8 +87,3 @@ int **ft_mix_mat(int **tab1, int **tab2, int n, int p, int q)
 	}
 	return (tab);
 }
-
-int main (int ac, char **av)
-{
-	return (0);
-}
