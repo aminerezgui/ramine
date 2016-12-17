@@ -1,3 +1,4 @@
+#include <stdlib.h>
 int chiffre(char c)
 {
 	if (c >= '0' && c <= '9')
@@ -23,8 +24,8 @@ int ft_atoi(char *str)
 	if (str[0] == '-')
 		flag++;
 	i = 1;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
-		i++;
+	/*while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
+		i++;*/
 	while (str[i])
 	{
 		if (chiffre(str[i]) == 0 && str[i] != '0')
@@ -40,3 +41,11 @@ int ft_atoi(char *str)
 		return (-rd);
 	return (rd);
 }
+
+/*int main(void)
+{
+	ft_putnbr(ft_atoi("  22  "));
+	ft_putchar('\n');
+	ft_putnbr(atoi("  22  "));
+	return (0);
+}*/
