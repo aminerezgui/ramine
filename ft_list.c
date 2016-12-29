@@ -156,3 +156,44 @@ char *list_to_string(t_list *begin_list)
 	str[i] = '\0';
 	return (str);
 }
+
+void ft_print_list_int(t_list *first)
+{
+	t_list *t;
+	int *nbr;
+
+	if (first == 0)
+		return ;
+	t = first;
+	while (t)
+	{
+		nbr = t->data;
+		ft_myputnbr(*nbr);
+		if (t->next)
+			write(1, " x ", 3);
+		t = t->next;
+	}
+	write(1, "\n", 1);
+}
+
+void ft_list_remove_if(t_list **first, int(*f)(void*))
+{
+	t_list *t;
+	t_list *o;
+	
+	if (*first == 0)
+		return ;
+	t = *first;
+	while (t)
+	{
+		o = t->next;
+		while (o && f(o->data))
+		{
+			t->next = o->next;
+			o = o->next;
+		}
+		t = t->next;
+	}
+	if (f((*first)->data))
+		*first = (*first)->next;
+}

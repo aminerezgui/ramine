@@ -35,7 +35,10 @@ void eratosthene(int a)
 	while (i < a - 1)
 	{
 		if (tab[i] != 0)
-			ft_printf("%d\n", tab[i]);
+		{
+			ft_putnbr(tab[i]);
+			ft_putstr("\n");
+		}
 		i++;
 	}
 }
