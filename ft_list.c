@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "ft_list.h"
+void ft_myputnbr(long a);
 
 t_list *ft_creat_elem(void *data)
 {
@@ -73,22 +74,20 @@ t_list *ft_list_copy(t_list *begin_list_ref)
 	return (begin_list_copy);
 }
 
-void ft_list_print(t_list *begin_list)
+void ft_list_print_char(t_list *begin_list)
 {
 	t_list *t;
-	char *str;
+	char *c;
 
 	if (begin_list == 0)
 		return ;
 	t = begin_list;
-	while (t->next)
+	while (t)
 	{
-		str = t->data;
-		write(1, str, 1);
+		c = t->data;
+		write(1, c, 1);
 		t = t->next;
 	}
-	str = t->data;
-	write(1, str, 1);
 }
 
 t_list *ft_list_at(t_list *begin_list, int n)

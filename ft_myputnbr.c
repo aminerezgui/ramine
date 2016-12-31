@@ -24,6 +24,6 @@ void ft_myputnbr(long a)
 	}
 	if (!*first)
 		write(1, "0", 1);
-	ft_list_print(*first);
+	ft_list_print_char(*first);
 	ft_list_free(*first);
 }
