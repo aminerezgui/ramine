@@ -48,6 +48,7 @@ int *ft_combi(int nbr)
 		}
 		i++;
 	}
+	return (tab);
 }
 
 t_list **ft_factorize(int n)

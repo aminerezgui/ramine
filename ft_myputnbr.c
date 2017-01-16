@@ -26,4 +26,5 @@ void ft_myputnbr(long a)
 		write(1, "0", 1);
 	ft_list_print_char(*first);
 	ft_list_free(*first);
+	free(first);
 }

@@ -76,6 +76,7 @@ int **ft_mix_mat(int **tab1, int **tab2, int n, int p, int q)
 	int **tab;
 	int i;
 	int j;
+	int *extra;
 
 	if (tab1 == 0 || tab2 == 0)
 		return (0);
@@ -86,7 +87,9 @@ int **ft_mix_mat(int **tab1, int **tab2, int n, int p, int q)
 		j = 0;
 		while (j < q)
 		{
-			tab[i][j] = mix_lc(tab1[i], extract_co(tab2, p, j), p);
+			extra = extract_co(tab2, p, j);
+			tab[i][j] = mix_lc(tab1[i], extra, p);
+			free(extra);
 			j++;
 		}
 		i++;

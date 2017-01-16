@@ -110,6 +110,8 @@ void ft_list_free(t_list *first)
 {
 	if (first != 0)
 		ft_list_free(first->next);
+	if (first)
+		free(first->data);
 	free(first);
 }
 
@@ -156,7 +158,7 @@ char *list_to_string(t_list *begin_list)
 	return (str);
 }
 
-void ft_print_list_int(t_list *first)
+void ft_list_print_int(t_list *first)
 {
 	t_list *t;
 	int *nbr;

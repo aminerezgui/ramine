@@ -18,7 +18,7 @@ int ft_list_size(t_list *begin_list);
 void ft_list_free(t_list *first);
 t_list *read_to_list(int fd);
 char *list_to_string(t_list *begin_list);
-void ft_print_list_int(t_list *first);
+void ft_list_print_int(t_list *first);
 void ft_list_remove_if(t_list **first, int(*f)(void*));
 
 #endif
